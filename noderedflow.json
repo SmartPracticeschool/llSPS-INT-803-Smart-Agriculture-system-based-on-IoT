@@ -1,260 +1,17 @@
 [
     {
-        "id": "ca94ec06.18779",
+        "id": "d3d5bf8b.2cc01",
         "type": "tab",
         "label": "Flow 1",
         "disabled": false,
         "info": ""
     },
     {
-        "id": "b96e30f7.62583",
-        "type": "debug",
-        "z": "ca94ec06.18779",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "x": 830,
-        "y": 140,
-        "wires": []
-    },
-    {
-        "id": "553fe91a.b1c9b8",
-        "type": "function",
-        "z": "ca94ec06.18779",
-        "name": "temperature",
-        "func": "msg.payload=msg.payload.d.temperature \nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 350,
-        "y": 100,
-        "wires": [
-            [
-                "b96e30f7.62583",
-                "85aeabc2.207de8"
-            ]
-        ]
-    },
-    {
-        "id": "8fd60b35.e091c8",
-        "type": "function",
-        "z": "ca94ec06.18779",
-        "name": "humidity",
-        "func": "msg.payload=msg.payload.d.humidity\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 340,
-        "y": 200,
-        "wires": [
-            [
-                "b96e30f7.62583",
-                "e72a9936.da2298"
-            ]
-        ]
-    },
-    {
-        "id": "85aeabc2.207de8",
-        "type": "ui_gauge",
-        "z": "ca94ec06.18779",
-        "name": "",
-        "group": "714ea219.a5586c",
-        "order": 2,
-        "width": 0,
-        "height": 0,
-        "gtype": "gage",
-        "title": "temperature",
-        "label": "units",
-        "format": "{{value}}",
-        "min": 0,
-        "max": "60",
-        "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
-        ],
-        "seg1": "",
-        "seg2": "",
-        "x": 810,
-        "y": 60,
-        "wires": []
-    },
-    {
-        "id": "e72a9936.da2298",
-        "type": "ui_gauge",
-        "z": "ca94ec06.18779",
-        "name": "",
-        "group": "714ea219.a5586c",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "gtype": "gage",
-        "title": "humidity",
-        "label": "units",
-        "format": "{{value}}",
-        "min": 0,
-        "max": "60",
-        "colors": [
-            "#00b500",
-            "#e6e600",
-            "#ca3838"
-        ],
-        "seg1": "",
-        "seg2": "",
-        "x": 840,
-        "y": 220,
-        "wires": []
-    },
-    {
-        "id": "f0f051cf.e1116",
-        "type": "ui_button",
-        "z": "ca94ec06.18779",
-        "name": "",
-        "group": "714ea219.a5586c",
-        "order": 4,
-        "width": 14,
-        "height": 2,
-        "passthru": false,
-        "label": "MOTOR ON",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "icon": "",
-        "payload": "{\"command\":\"lighton\"}",
-        "payloadType": "json",
-        "topic": "",
-        "x": 350,
-        "y": 320,
-        "wires": [
-            [
-                "921ce968.5c6c48"
-            ]
-        ]
-    },
-    {
-        "id": "c8d3ae05.90134",
-        "type": "ui_button",
-        "z": "ca94ec06.18779",
-        "name": "",
-        "group": "714ea219.a5586c",
-        "order": 3,
-        "width": 14,
-        "height": 2,
-        "passthru": false,
-        "label": "MOTOR OFF",
-        "tooltip": "",
-        "color": "",
-        "bgcolor": "",
-        "icon": "",
-        "payload": "{\"command\":\"lightoff\"}",
-        "payloadType": "json",
-        "topic": "",
-        "x": 350,
-        "y": 260,
-        "wires": [
-            [
-                "921ce968.5c6c48"
-            ]
-        ]
-    },
-    {
-        "id": "1ff33073.de79",
-        "type": "http request",
-        "z": "ca94ec06.18779",
-        "name": "API",
-        "method": "GET",
-        "ret": "obj",
-        "paytoqs": false,
-        "url": "api.openweathermap.org/data/2.5/weather?q=Madurai, IN  &appid=0abd70e0081f3dd50a4a20e7bac42c12",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "authType": "",
-        "x": 330,
-        "y": 420,
-        "wires": [
-            [
-                "3d9f6cad.9aa644",
-                "eeeda1a2.2f5be"
-            ]
-        ]
-    },
-    {
-        "id": "e6ac3adf.59acb8",
-        "type": "inject",
-        "z": "ca94ec06.18779",
-        "name": "",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "x": 120,
-        "y": 420,
-        "wires": [
-            [
-                "1ff33073.de79"
-            ]
-        ]
-    },
-    {
-        "id": "f70906fc.738f58",
-        "type": "debug",
-        "z": "ca94ec06.18779",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "x": 870,
-        "y": 300,
-        "wires": []
-    },
-    {
-        "id": "3d9f6cad.9aa644",
-        "type": "function",
-        "z": "ca94ec06.18779",
-        "name": "Humidity",
-        "func": "msg.payload=msg.payload.main.humidity\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 560,
-        "y": 420,
-        "wires": [
-            [
-                "f70906fc.738f58",
-                "acd16a18.39d1e8"
-            ]
-        ]
-    },
-    {
-        "id": "acd16a18.39d1e8",
-        "type": "ui_text",
-        "z": "ca94ec06.18779",
-        "group": "714ea219.a5586c",
-        "order": 5,
-        "width": 14,
-        "height": "2",
-        "name": "",
-        "label": "HUMIDITY:",
-        "format": "{{msg.payload}}",
-        "layout": "row-left",
-        "x": 910,
-        "y": 420,
-        "wires": []
-    },
-    {
-        "id": "f1015091.19f82",
+        "id": "f0e14a3e.da4a28",
         "type": "ibmiot in",
-        "z": "ca94ec06.18779",
+        "z": "d3d5bf8b.2cc01",
         "authentication": "apiKey",
-        "apiKey": "f87aadfc.e1d51",
+        "apiKey": "ae115e77.561d3",
         "inputType": "evt",
         "logicalInterface": "",
         "ruleId": "",
@@ -262,65 +19,70 @@
         "applicationId": "",
         "deviceType": "NODEMCU",
         "eventType": "+",
-        "commandType": "data",
+        "commandType": "",
         "format": "json",
         "name": "IBM IoT",
         "service": "registered",
         "allDevices": "",
         "allApplications": "",
-        "allDeviceTypes": false,
+        "allDeviceTypes": "",
         "allLogicalInterfaces": "",
         "allEvents": true,
         "allCommands": "",
         "allFormats": "",
         "qos": 0,
-        "x": 130,
-        "y": 180,
+        "x": 90,
+        "y": 80,
         "wires": [
             [
-                "553fe91a.b1c9b8",
-                "8fd60b35.e091c8"
+                "dc73b360.5b253",
+                "1d92994d.4a38b7",
+                "e2ae9127.fcef9"
             ]
         ]
     },
     {
-        "id": "eeeda1a2.2f5be",
+        "id": "dc73b360.5b253",
         "type": "function",
-        "z": "ca94ec06.18779",
-        "name": "Temperature",
-        "func": "msg.payload=msg.payload.main.temp\nreturn msg;",
+        "z": "d3d5bf8b.2cc01",
+        "name": "TEMPERTURE",
+        "func": "msg.payload=msg.payload.d.temperature\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 580,
-        "y": 480,
+        "x": 300,
+        "y": 60,
         "wires": [
             [
-                "c8d48f2d.4797a"
+                "d1d81511.f11088",
+                "49515f67.f4aa",
+                "6086d005.8cf5e"
             ]
         ]
     },
     {
-        "id": "c8d48f2d.4797a",
-        "type": "ui_text",
-        "z": "ca94ec06.18779",
-        "group": "714ea219.a5586c",
-        "order": 5,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "TEMPERATURE:",
-        "format": "{{msg.payload}}",
-        "layout": "row-left",
-        "x": 940,
-        "y": 500,
-        "wires": []
+        "id": "1d92994d.4a38b7",
+        "type": "function",
+        "z": "d3d5bf8b.2cc01",
+        "name": "HUMIDITY",
+        "func": "msg.payload=msg.payload.d.humidity\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 270,
+        "y": 440,
+        "wires": [
+            [
+                "d1d81511.f11088",
+                "ac0dfa4f.d558c8",
+                "65225105.cf138"
+            ]
+        ]
     },
     {
-        "id": "921ce968.5c6c48",
+        "id": "20fedd7a.b00502",
         "type": "ibmiot out",
-        "z": "ca94ec06.18779",
+        "z": "d3d5bf8b.2cc01",
         "authentication": "apiKey",
-        "apiKey": "f87aadfc.e1d51",
+        "apiKey": "ae115e77.561d3",
         "outputType": "cmd",
         "deviceId": "8248256456",
         "deviceType": "NODEMCU",
@@ -330,23 +92,410 @@
         "qos": 0,
         "name": "IBM IoT",
         "service": "registered",
-        "x": 640,
-        "y": 260,
+        "x": 740,
+        "y": 740,
         "wires": []
     },
     {
-        "id": "714ea219.a5586c",
-        "type": "ui_group",
-        "z": "",
-        "name": "Smart Agricultural System",
-        "tab": "da98062e.c8f918",
-        "order": 1,
-        "disp": true,
-        "width": "14",
-        "collapse": false
+        "id": "b238e05a.252ab",
+        "type": "ui_button",
+        "z": "d3d5bf8b.2cc01",
+        "name": "",
+        "group": "32655b8b.3084f4",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "MOTOR OFF",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "{\"command\":\"motoroff\"}",
+        "payloadType": "json",
+        "topic": "",
+        "x": 160,
+        "y": 780,
+        "wires": [
+            [
+                "20fedd7a.b00502"
+            ]
+        ]
     },
     {
-        "id": "f87aadfc.e1d51",
+        "id": "2578d053.b6723",
+        "type": "ui_button",
+        "z": "d3d5bf8b.2cc01",
+        "name": "",
+        "group": "32655b8b.3084f4",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "MOTOR ON",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "sky blue",
+        "icon": "",
+        "payload": "{\"command\":\"motoron\"}",
+        "payloadType": "json",
+        "topic": "",
+        "x": 150,
+        "y": 720,
+        "wires": [
+            [
+                "20fedd7a.b00502"
+            ]
+        ]
+    },
+    {
+        "id": "378aba74.873636",
+        "type": "inject",
+        "z": "d3d5bf8b.2cc01",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 100,
+        "y": 1020,
+        "wires": [
+            [
+                "6816ddb4.ec3e04"
+            ]
+        ]
+    },
+    {
+        "id": "d1d81511.f11088",
+        "type": "debug",
+        "z": "d3d5bf8b.2cc01",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 530,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "6816ddb4.ec3e04",
+        "type": "http request",
+        "z": "d3d5bf8b.2cc01",
+        "name": "Open Weather API",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": false,
+        "url": "api.openweathermap.org/data/2.5/weather?q=Madurai, IN  &appid=0abd70e0081f3dd50a4a20e7bac42c12",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 250,
+        "y": 920,
+        "wires": [
+            [
+                "4cb2f806.de2518",
+                "da181d11.c35b3"
+            ]
+        ]
+    },
+    {
+        "id": "4cb2f806.de2518",
+        "type": "function",
+        "z": "d3d5bf8b.2cc01",
+        "name": "Humidity",
+        "func": "msg.payload=msg.payload.main.humidity\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 580,
+        "y": 840,
+        "wires": [
+            [
+                "24003855.349418"
+            ]
+        ]
+    },
+    {
+        "id": "da181d11.c35b3",
+        "type": "function",
+        "z": "d3d5bf8b.2cc01",
+        "name": "Temperature",
+        "func": "msg.payload=msg.payload.main.temp\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 550,
+        "y": 980,
+        "wires": [
+            [
+                "5e3a9265.c2903c"
+            ]
+        ]
+    },
+    {
+        "id": "24003855.349418",
+        "type": "ui_text",
+        "z": "d3d5bf8b.2cc01",
+        "group": "4503fd96.eee874",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "Humidity",
+        "label": "HUMIDITY : ",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 760,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "5e3a9265.c2903c",
+        "type": "ui_text",
+        "z": "d3d5bf8b.2cc01",
+        "group": "4503fd96.eee874",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "Temperature",
+        "label": "TEMPERTURE",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 750,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "49515f67.f4aa",
+        "type": "ui_gauge",
+        "z": "d3d5bf8b.2cc01",
+        "name": "Temperature",
+        "group": "d90b4d61.c4258",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "TEMPERATURE",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 670,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "ac0dfa4f.d558c8",
+        "type": "ui_gauge",
+        "z": "d3d5bf8b.2cc01",
+        "name": "Humidity",
+        "group": "d90b4d61.c4258",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "HUMIDITY",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 660,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "65225105.cf138",
+        "type": "ui_chart",
+        "z": "d3d5bf8b.2cc01",
+        "name": "Humidity",
+        "group": "e62587f5.164868",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "label": "HUMIDITY",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 680,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6086d005.8cf5e",
+        "type": "ui_chart",
+        "z": "d3d5bf8b.2cc01",
+        "name": "TEMPERATURE",
+        "group": "e62587f5.164868",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "TEMPERATURE",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 650,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e2ae9127.fcef9",
+        "type": "function",
+        "z": "d3d5bf8b.2cc01",
+        "name": "Object Temperature",
+        "func": "msg.payload=msg.payload.d.objectTemp\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 230,
+        "y": 560,
+        "wires": [
+            [
+                "d0b9e723.e31cb8",
+                "84b8e9d3.fed618",
+                "d1d81511.f11088"
+            ]
+        ]
+    },
+    {
+        "id": "d0b9e723.e31cb8",
+        "type": "ui_gauge",
+        "z": "d3d5bf8b.2cc01",
+        "name": "",
+        "group": "d90b4d61.c4258",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "OBJECT TEMPERATURE",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 690,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "84b8e9d3.fed618",
+        "type": "ui_chart",
+        "z": "d3d5bf8b.2cc01",
+        "name": "",
+        "group": "e62587f5.164868",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "OBJECT TEMPERATURE",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 690,
+        "y": 620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ae115e77.561d3",
         "type": "ibmiot",
         "z": "",
         "name": "",
@@ -354,16 +503,68 @@
         "serverName": "nwarur.messaging.internetofthings.ibmcloud.com",
         "cleansession": true,
         "appId": "",
-        "shared": true
+        "shared": false
     },
     {
-        "id": "da98062e.c8f918",
+        "id": "32655b8b.3084f4",
+        "type": "ui_group",
+        "z": "",
+        "name": "CONTROLS",
+        "tab": "32308b2e.1a6ed4",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": true
+    },
+    {
+        "id": "4503fd96.eee874",
+        "type": "ui_group",
+        "z": "",
+        "name": "Open Weather API",
+        "tab": "32308b2e.1a6ed4",
+        "order": 5,
+        "disp": true,
+        "width": "6",
+        "collapse": true
+    },
+    {
+        "id": "d90b4d61.c4258",
+        "type": "ui_group",
+        "z": "",
+        "name": "Smart Agricultural System",
+        "tab": "32308b2e.1a6ed4",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "e62587f5.164868",
+        "type": "ui_group",
+        "z": "",
+        "name": "CHART",
+        "tab": "ae89ab47.ac6348",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "32308b2e.1a6ed4",
         "type": "ui_tab",
         "z": "",
-        "name": "SMART AGRICULTURAL SYSTEM",
+        "name": "Smart Agricultural system",
         "icon": "dashboard",
         "disabled": false,
-        "hidden": false,
-        "info": "## "
+        "hidden": false
+    },
+    {
+        "id": "ae89ab47.ac6348",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Graphs",
+        "icon": "fa-line-chart",
+        "disabled": false,
+        "hidden": false
     }
 ]
